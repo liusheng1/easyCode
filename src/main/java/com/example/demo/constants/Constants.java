@@ -11,16 +11,16 @@ public interface Constants {
 	String HTTP_RES_CODE_500_VALUE = "服务器内部错误!";
 	String HTTP_RES_CODE_503_VALUE = "服务器正忙，请稍后再试!";
 	// 响应请求成功code
-	Integer HTTP_RES_CODE_200 = 200;
+	String HTTP_RES_CODE_200 = "200";
 	// 系统错误
-	Integer HTTP_RES_CODE_400 = 400;
-	Integer HTTP_RES_CODE_403 = 403;
-	Integer HTTP_RES_CODE_401 = 401;
-	Integer HTTP_RES_CODE_404 = 404;
-	Integer HTTP_RES_CODE_503 = 503;
-	Integer HTTP_RES_CODE_500 = 500;
+	String HTTP_RES_CODE_400 = "400";
+	String HTTP_RES_CODE_403 = "403";
+	String HTTP_RES_CODE_401 = "401";
+	String HTTP_RES_CODE_404 = "404";
+	String HTTP_RES_CODE_503 = "503";
+	String HTTP_RES_CODE_500 = "500";
 	// 未关联QQ账号
-	Integer HTTP_RES_CODE_201 = 201;
+	String HTTP_RES_CODE_201 = "201";
 	// 发送邮件
 	String MSG_EMAIL = "email";
 	// 会员token
@@ -54,4 +54,6 @@ public interface Constants {
 	// 用户信息不存在
 	Integer HTTP_RES_CODE_NOTUSER_203 = 203;
 
+    String HTTP_RES_CODE_405 = "405";
+	String HTTP_RES_CODE_405_VALUE ="Method Not Allowed" ;
 }

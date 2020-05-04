@@ -1,4 +1,3 @@
-/*
 package com.example.demo.utils;
  
 import com.google.zxing.LuminanceSource;
@@ -40,7 +39,8 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
 		this.top = top;
 	}
  
-	public byte[] getRow(int y, byte[] row) {
+	@Override
+    public byte[] getRow(int y, byte[] row) {
 		if (y < 0 || y >= getHeight()) {
 			throw new IllegalArgumentException("Requested row is outside the image: " + y);
 		}
@@ -52,7 +52,8 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
 		return row;
 	}
  
-	public byte[] getMatrix() {
+	@Override
+    public byte[] getMatrix() {
 		int width = getWidth();
 		int height = getHeight();
 		int area = width * height;
@@ -61,19 +62,23 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
 		return matrix;
 	}
  
-	public boolean isCropSupported() {
+	@Override
+    public boolean isCropSupported() {
 		return true;
 	}
  
-	public LuminanceSource crop(int left, int top, int width, int height) {
+	@Override
+    public LuminanceSource crop(int left, int top, int width, int height) {
 		return new BufferedImageLuminanceSource(image, this.left + left, this.top + top, width, height);
 	}
  
-	public boolean isRotateSupported() {
+	@Override
+    public boolean isRotateSupported() {
 		return true;
 	}
  
-	public LuminanceSource rotateCounterClockwise() {
+	@Override
+    public LuminanceSource rotateCounterClockwise() {
 		int sourceWidth = image.getWidth();
 		int sourceHeight = image.getHeight();
 		AffineTransform transform = new AffineTransform(0.0, -1.0, 1.0, 0.0, 0.0, sourceWidth);
@@ -85,4 +90,4 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
 		return new BufferedImageLuminanceSource(rotatedImage, top, sourceWidth - (left + width), getHeight(), width);
 	}
  
-}*/
+}

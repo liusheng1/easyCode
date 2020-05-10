@@ -1,0 +1,34 @@
+pipeline {
+    agent { docker 'maven:3.3.3' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+                emailext body: 'sdsdfddfdfg', subject: 'jdsjkdsfjkjdks', to: '851239669@qq.com'
+
+            }
+        }
+    }
+     stages {
+
+
+            stage('Deploy - Staging') {
+                steps {
+                    sh './deploy staging'
+                    sh './run-smoke-tests'
+                }
+            }
+
+            stage('Sanity check') {
+                steps {
+                    input "Does the staging environment look ok?"
+                }
+            }
+
+            stage('Deploy - Production') {
+                steps {
+                    sh './deploy production'
+                }
+            }
+        }
+}

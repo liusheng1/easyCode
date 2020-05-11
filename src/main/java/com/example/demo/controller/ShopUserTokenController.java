@@ -2,9 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.ShopUserToken;
 import com.example.demo.service.ShopUserTokenService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * (ShopUserToken)表控制层
@@ -28,8 +32,8 @@ public class ShopUserTokenController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public ShopUserToken selectOne(Integer id) {
-        return this.shopUserTokenService.queryById(id);
+    public ShopUserToken selectOne(HttpServletRequest request, HttpServletResponse response, Integer id) {
+        return this.shopUserTokenService.queryById(response,request,id);
     }
 
 }

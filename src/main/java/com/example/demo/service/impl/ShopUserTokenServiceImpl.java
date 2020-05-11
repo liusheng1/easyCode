@@ -6,6 +6,8 @@ import com.example.demo.service.ShopUserTokenService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -25,9 +27,17 @@ public class ShopUserTokenServiceImpl implements ShopUserTokenService {
      * @param id 主键
      * @return 实例对象
      */
+
+
     @Override
-    public ShopUserToken queryById(Integer id) {
-        return this.shopUserTokenDao.queryById(id);
+    public ShopUserToken queryById(HttpServletResponse response, HttpServletRequest request, Integer id) {
+        String x_user_tokrn = request.getHeader("X_user_token");
+        if(x_user_tokrn.equals("dajiahao")){
+           return  this.shopUserTokenDao.queryById(id) ;
+        }else {
+            return  null ;
+        }
+
     }
 
     /**
@@ -63,7 +73,8 @@ public class ShopUserTokenServiceImpl implements ShopUserTokenService {
     @Override
     public ShopUserToken update(ShopUserToken shopUserToken) {
         this.shopUserTokenDao.update(shopUserToken);
-        return this.queryById(shopUserToken.getId());
+      //  return this.queryById(shopUserToken.getId());
+        return  null;
     }
 
     /**

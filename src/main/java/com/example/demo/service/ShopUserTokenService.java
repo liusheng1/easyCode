@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.ShopUserToken;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -17,7 +20,7 @@ public interface ShopUserTokenService {
      * @param id 主键
      * @return 实例对象
      */
-    ShopUserToken queryById(Integer id);
+    ShopUserToken queryById(HttpServletResponse response ,HttpServletRequest request, Integer id);
 
     /**
      * 查询多条数据

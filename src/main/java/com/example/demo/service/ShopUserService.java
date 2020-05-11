@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.demo.base.BaseResponse;
 import com.example.demo.entity.ShopUser;
 
 import java.util.List;
@@ -20,7 +18,7 @@ public interface ShopUserService {
      * @param userId 主键
      * @return 实例对象
      */
-    BaseResponse<JSONObject> queryById(Integer userId);
+    ShopUser queryById(Integer userId);
 
     /**
      * 查询多条数据

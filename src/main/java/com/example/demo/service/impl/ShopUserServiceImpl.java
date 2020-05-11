@@ -3,8 +3,6 @@ package com.example.demo.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.base.BaseApiService;
-import com.example.demo.base.BaseResponse;
-import com.example.demo.constants.Constants;
 import com.example.demo.dao.ShopUserDao;
 import com.example.demo.entity.ShopUser;
 import com.example.demo.service.ShopUserService;
@@ -33,16 +31,14 @@ public class ShopUserServiceImpl extends BaseApiService implements ShopUserServi
      * @return 实例对象
      */
     @Override
-    public BaseResponse<JSONObject> queryById(Integer userId) {
+    public ShopUser queryById(Integer userId) {
 
             log.warn("ShopUserServiceImpl.queryById,params={}",userId);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("results",shopUserDao.queryById(userId));
            // int o=1/0;
-
-
             log.warn("ShopUserServiceImpl.queryById,result={}",jsonObject);
-            return setResult(Constants.HTTP_RES_CODE_200,Constants.HTTP_RES_CODE_200_VALUE,jsonObject);
+            return shopUserDao.queryById(userId);
 
 
 
